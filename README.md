@@ -24,6 +24,7 @@
 - Create an awesome plugin.
   - Make a folder for your plugin and choose a meaningful name.
   - Create a python file named the same inside your plugin folder.
+  - If necessary, create a `requirements.txt` file and add all the dependencies your plugin needs.
 - Open a new [Pull Request](https://github.com/pyrogram/plugins/compare) to propose adding your plugin inside the [plugins](plugins) directory.
   - Make sure you add a proper license and your name to it.
   - Also edit the readme to add the plugin in the list below.
