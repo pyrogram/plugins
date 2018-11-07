@@ -38,3 +38,4 @@ You found a bug on a plugin or want to extend one? Or maybe you have ideas on ho
 Name | Description | Usage | License
 :--- | :--- | :--- | :---
 [**Haste**](plugins/haste), by [delivrance](//github.com/delivrance) | Upload text to hastebin.com and send its link | Reply to a group chat text message with `!haste` | MIT
+[**Replace**](plugins/replace), by [brightside](//github.com/bright5ide) | Search and Replace a part of a message to suggest user if he meant something else  | Reply to a group chat text message with `!r <old>/<new>` | MIT
