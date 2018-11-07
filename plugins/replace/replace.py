@@ -25,7 +25,7 @@ from pyrogram import Client, Filters
 @Client.on_message(Filters.command("r", prefix="!") & Filters.reply & ~Filters.edited & Filters.group)
 def r(client, message):
     if len(message.command) > 1:
-        colength = len("s") + len("!")
+        colength = len("r") + len("!")
         query = str(message.text)[colength:].lstrip()
         eventsplit=query.split("/")
         result="**You mean:**\n{}".format(message.reply_to_message.text.replace(eventsplit[0],eventsplit[1]))
