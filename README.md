@@ -37,8 +37,8 @@ You found a bug on a plugin or want to extend one? Or maybe you have ideas on ho
 
 ## Plugins Collection
 
-Name | Description | Usage | License
-:--- | :--- | :--- | :---
+Name | Description | Usage
+:--- | :--- | :---
 [**haste**](plugins/haste), by [delivrance](//github.com/delivrance) | Upload text to hastebin.com and send its link | Reply to a group chat text message with `!haste`
 [**welcome**](plugins/welcome), by [delivrance](//github.com/delivrance) | Greet new members with a welcome message | Run and wait for new members to join your groups
 [**eval**](plugins/eval), by [Furoin](//github.com/Furoin) | Evaluate a Python expression and send the result | Example: `!eval 1+2+3`
