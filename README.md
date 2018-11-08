@@ -37,8 +37,8 @@ You found a bug on a plugin or want to extend one? Or maybe you have ideas on ho
 
 ## Plugins Collection
 
-Name | Description | Usage | License
-:--- | :--- | :--- | :---
-[**Haste**](plugins/haste), by [delivrance](//github.com/delivrance) | Upload text to hastebin.com and send its link | Reply to a group chat text message with `!haste` | MIT
-[**Welcome**](plugins/welcome), by [delivrance](//github.com/delivrance) | Greet new members with a welcome message | Run and wait for new members to join your groups | MIT
-[**Replace**](plugins/replace), by [brightside](//github.com/bright5ide) | Search and Replace a part of a message to suggest user if he meant something else  | Reply to a group chat text message with `!r <old>/<new>` | MIT
+Name | Description | Usage
+:--- | :--- | :---
+[**Haste**](plugins/haste), by [delivrance](//github.com/delivrance) | Upload text to hastebin.com and send its link | Reply to a group chat text message with `!haste`
+[**Welcome**](plugins/welcome), by [delivrance](//github.com/delivrance) | Greet new members with a welcome message | Run and wait for new members to join your groups
+[**Replace**](plugins/replace), by [brightside](//github.com/bright5ide) | Search and Replace a part of a message to suggest user if he meant something else  | Reply to a group chat text message with `!r <old>/<new>`
