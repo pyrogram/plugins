@@ -22,31 +22,37 @@
 
 from pyrogram import Client, Filters
 
-eval_running_text = "**Eval Code:**\n```{code}```\n**Running...**"
-eval_success_text = "**Eval Code:**\n```{code}```\n**Success**"
-eval_error_text = "**Eval Code:**\n```{code}```\n**Error:**\n```{error}```"
-eval_result_text = "**Eval Code:**\n```{code}```\n**Result:**\n```{result}```"
+RUNNING = "**Eval Expression:**\n```{}```\n**Running...**"
+ERROR = "**Eval Expression:**\n```{}```\n**Error:**\n```{}```"
+SUCCESS = "**Eval Expression:**\n```{}```\n**Success**"
+RESULT = "**Eval Expression:**\n```{}```\n**Result:**\n```{}```"
 
 
 @Client.on_message(Filters.command("eval", prefix="!"))
-def evalcode(client, message):
-    code = " ".join(message.command[1:])
-    if code:
-        m = client.send_message(message.chat.id, eval_running_text.replace('{code}', code), parse_mode="MARKDOWN")
+def eval_expression(client, message):
+    expression = " ".join(message.command[1:])
+
+    if expression:
+        m = message.reply(RUNNING.format(expression))
+
         try:
-            result = eval(code)
-
-        except Exception as e:
-            client.edit_message_text(message.chat.id, m.message_id,
-                                     eval_error_text.replace('{code}', code).replace('{error}', str(e)),
-                                     parse_mode="MARKDOWN")
+            result = eval(expression)
+        except Exception as error:
+            client.edit_message_text(
+                m.chat.id,
+                m.message_id,
+                ERROR.format(expression, error)
+            )
         else:
-            if result:
-                client.edit_message_text(message.chat.id, m.message_id,
-                                         eval_result_text.replace('{code}', code).replace('{result}', str(result)),
-                                         parse_mode="MARKDOWN")
-
+            if result is None:
+                client.edit_message_text(
+                    m.chat.id,
+                    m.message_id,
+                    SUCCESS.format(expression)
+                )
             else:
-                client.edit_message_text(message.chat.id, m.message_id,
-                                         eval_success_text.replace('{code}', code),
-                                         parse_mode="MARKDOWN")
+                client.edit_message_text(
+                    m.chat.id,
+                    m.message_id,
+                    RESULT.format(expression, result)
+                )
