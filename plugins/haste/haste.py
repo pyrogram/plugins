@@ -34,6 +34,8 @@ def haste(client, message):
     if reply.text is None:
         return
 
+    message.delete()
+
     result = requests.post(
         "{}/documents".format(BASE),
         data=reply.text.encode("UTF-8")
