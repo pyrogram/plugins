@@ -38,3 +38,4 @@ You found a bug on a plugin or want to extend one? Or maybe you have ideas on ho
 Name | Description | Usage | License
 :--- | :--- | :--- | :---
 [**Haste**](plugins/haste), by [delivrance](//github.com/delivrance) | Upload text to hastebin.com and send its link | Reply to a group chat text message with `!haste` | MIT
+[**Welcome**](plugins/welcome), by [delivrance](//github.com/delivrance) | Greet new members with a welcome message | Run and wait for new members to join your groups | MIT
