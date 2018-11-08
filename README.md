@@ -37,3 +37,4 @@ You found a bug on a plugin or want to extend one? Or maybe you have ideas on ho
 Name | Description | Usage | License
 :--- | :--- | :--- | :---
 [**Haste**](plugins/haste), by [delivrance](//github.com/delivrance) | Upload text to hastebin.com and send its link | Reply to a group chat text message with `!haste` | MIT
+[**eval**](plugins/eval), by [Furoin](//github.com/Furoin) | Evaluate a Python expression and send the result | Example: `!eval 1+2+3` | MIT
