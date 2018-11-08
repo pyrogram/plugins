@@ -12,6 +12,8 @@
 - [Download](https://github.com/pyrogram/plugins/archive/master.zip) and copy the desired plugin(s) into your *plugins* folder.
 - Enable plugins in your Client by telling Pyrogram to search on your folder with `plugins_dir="plugins"`:
   ```python
+  from pyrogram import Client
+
   app = Client("my_account", plugins_dir="plugins")
   ```
 - Done! Run your client with `app.run()`, the plugins will be automatically loaded.
@@ -38,4 +40,5 @@ You found a bug on a plugin or want to extend one? Or maybe you have ideas on ho
 Name | Description | Usage | License
 :--- | :--- | :--- | :---
 [**Haste**](plugins/haste), by [delivrance](//github.com/delivrance) | Upload text to hastebin.com and send its link | Reply to a group chat text message with `!haste` | MIT
+[**Welcome**](plugins/welcome), by [delivrance](//github.com/delivrance) | Greet new members with a welcome message | Run and wait for new members to join your groups | MIT
 [**Replace**](plugins/replace), by [brightside](//github.com/bright5ide) | Search and Replace a part of a message to suggest user if he meant something else  | Reply to a group chat text message with `!r <old>/<new>` | MIT
