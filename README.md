@@ -1,6 +1,6 @@
-# :fire: Pyrogram Plugins
+# Pyrogram Plugins
 
-<img align="right" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/155/jigsaw-puzzle-piece_1f9e9.png">
+<img src="https://i.imgur.com/JyxrStE.png" width="160" align="right">
 
 > A collection of Pyrogram plugins made by the community
 
@@ -10,19 +10,19 @@
 
 - Create a new folder in your working directory (e.g.: *plugins*).
 - [Download](https://github.com/pyrogram/plugins/archive/master.zip) and copy the desired plugin(s) into your *plugins* folder.
-- Enable plugins in your Client by telling Pyrogram to search on your folder with `plugins_dir="plugins"`:
+- Enable plugins in your Client by telling Pyrogram to search on your folder with `plugins=dict(root="plugins")`:
   ```python
   from pyrogram import Client
 
-  app = Client("my_account", plugins_dir="plugins")
+  app = Client("my_account", plugins=dict(root="plugins"))
   ```
 - Done! Run your client with `app.run()`, the plugins will be automatically loaded.
 
-[**More details**](https://docs.pyrogram.ml/resources/SmartPlugins#using-smart-plugins)
+[**More details**](https://docs.pyrogram.org/topics/smart-plugins#using-smart-plugins)
 
 ## Adding Plugins
 
-- Understand how [Smart Plugins](//docs.pyrogram.ml/resources/SmartPlugins) work.
+- Understand how [Smart Plugins](https://docs.pyrogram.org/topics/smart-plugins) work.
 - Create an awesome plugin.
   - Make a folder for your plugin and choose a meaningful name.
   - Create a python file named the same inside your plugin folder.
