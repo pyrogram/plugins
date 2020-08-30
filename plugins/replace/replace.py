@@ -20,9 +20,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from pyrogram import Client, Filters
+from pyrogram import Client, filters
     
-@Client.on_message(Filters.command("r", prefix="!") & Filters.reply & ~Filters.edited & Filters.group)
+@Client.on_message(filters.command("r", "!") & filters.reply & ~filters.edited & filters.group)
 def r(client, message):
     if len(message.command) > 1:
         colength = len("r") + len("!")
