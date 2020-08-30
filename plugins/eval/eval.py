@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from pyrogram import Client, Filters
+from pyrogram import Client, filters
 
 RUNNING = "**Eval Expression:**\n```{}```\n**Running...**"
 ERROR = "**Eval Expression:**\n```{}```\n**Error:**\n```{}```"
@@ -28,7 +28,7 @@ SUCCESS = "**Eval Expression:**\n```{}```\n**Success**"
 RESULT = "**Eval Expression:**\n```{}```\n**Result:**\n```{}```"
 
 
-@Client.on_message(Filters.command("eval", prefix="!"))
+@Client.on_message(filters.command("eval", "!"))
 def eval_expression(client, message):
     expression = " ".join(message.command[1:])
 

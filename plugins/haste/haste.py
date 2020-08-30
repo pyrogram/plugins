@@ -22,12 +22,12 @@
 
 import requests
 
-from pyrogram import Client, Filters
+from pyrogram import Client, filters
 
 BASE = "https://hastebin.com"
 
 
-@Client.on_message(Filters.command("haste", prefix="!") & Filters.reply)
+@Client.on_message(filters.command("haste", "!") & filters.reply)
 def haste(client, message):
     reply = message.reply_to_message
 
