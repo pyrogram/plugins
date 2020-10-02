@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2020 BrightSide <https://github.com/bright5ide>
+# Copyright (c) 2020 Dan Tès <https://github.com/delivrance>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,21 +20,28 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import requests
+
 from pyrogram import Client, filters
+from pyrogram.types import Message
+
+BASE = "https://nekobin.com"
 
 
-@Client.on_message(
-    filters.command("r", prefixes=("!",))
-    & filters.reply
-    & ~filters.edited
-    & filters.group
-)
-def r(client, message):
-    if len(message.command) > 1:
-        colength = len("r") + len("!")
-        query = str(message.text)[colength:].lstrip()
-        eventsplit = query.split("/")
-        result = "**You mean:**\n{}".format(
-            message.reply_to_message.text.replace(eventsplit[0], eventsplit[1])
-        )
-        client.edit_message_text(message.chat.id, message.message_id, result)
+@Client.on_message(filters.command("neko", prefixes=("!",)) & filters.reply)
+def haste(client: Client, message: Message):
+    reply = message.reply_to_message
+
+    if reply.text is None:
+        return
+
+    message.delete()
+
+    result = requests.post(
+        "{}/api/documents".format(BASE), data=dict(content=reply.text.encode("UTF-8"))
+    ).json()
+
+    message.reply(
+        "{}/{}.py".format(BASE, result["result"]["key"]),
+        reply_to_message_id=reply.message_id,
+    )
