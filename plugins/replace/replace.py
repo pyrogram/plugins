@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2018 BrightSide <https://github.com/bright5ide>
+# Copyright (c) 2020 BrightSide <https://github.com/bright5ide>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,13 +20,18 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from pyrogram import Client, Filters
-    
-@Client.on_message(Filters.command("r", prefix="!") & Filters.reply & ~Filters.edited & Filters.group)
+from pyrogram import Client, filters
+
+
+@Client.on_message(
+    filters.command("r", prefixes=("!",)) & filters.reply & ~filters.edited & filters.group
+)
 def r(client, message):
     if len(message.command) > 1:
         colength = len("r") + len("!")
         query = str(message.text)[colength:].lstrip()
-        eventsplit=query.split("/")
-        result="**You mean:**\n{}".format(message.reply_to_message.text.replace(eventsplit[0],eventsplit[1]))
+        eventsplit = query.split("/")
+        result = "**You mean:**\n{}".format(
+            message.reply_to_message.text.replace(eventsplit[0], eventsplit[1])
+        )
         client.edit_message_text(message.chat.id, message.message_id, result)

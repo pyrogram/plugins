@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2018 Furoin <https://github.com/furoin>
+# Copyright (c) 2020 Furoin <https://github.com/furoin>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from pyrogram import Client, Filters
+from pyrogram import Client, filters
 
 RUNNING = "**Eval Expression:**\n```{}```\n**Running...**"
 ERROR = "**Eval Expression:**\n```{}```\n**Error:**\n```{}```"
@@ -28,7 +28,7 @@ SUCCESS = "**Eval Expression:**\n```{}```\n**Success**"
 RESULT = "**Eval Expression:**\n```{}```\n**Result:**\n```{}```"
 
 
-@Client.on_message(Filters.command("eval", prefix="!"))
+@Client.on_message(filters.command("eval", prefixes=("!",)))
 def eval_expression(client, message):
     expression = " ".join(message.command[1:])
 
@@ -39,20 +39,14 @@ def eval_expression(client, message):
             result = eval(expression)
         except Exception as error:
             client.edit_message_text(
-                m.chat.id,
-                m.message_id,
-                ERROR.format(expression, error)
+                m.chat.id, m.message_id, ERROR.format(expression, error)
             )
         else:
             if result is None:
                 client.edit_message_text(
-                    m.chat.id,
-                    m.message_id,
-                    SUCCESS.format(expression)
+                    m.chat.id, m.message_id, SUCCESS.format(expression)
                 )
             else:
                 client.edit_message_text(
-                    m.chat.id,
-                    m.message_id,
-                    RESULT.format(expression, result)
+                    m.chat.id, m.message_id, RESULT.format(expression, result)
                 )
