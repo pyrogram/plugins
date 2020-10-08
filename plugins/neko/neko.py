@@ -29,7 +29,7 @@ BASE = "https://nekobin.com"
 
 
 @Client.on_message(filters.command("neko", prefixes=("!",)) & filters.reply)
-def haste(client: Client, message: Message):
+def neko(client: Client, message: Message):
     reply = message.reply_to_message
 
     if reply.text is None:
