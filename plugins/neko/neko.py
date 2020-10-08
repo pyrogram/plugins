@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2020 Dan Tès <https://github.com/delivrance>
+# Copyright (c) 2020 GodSaveTheDoge <https://github.com/GodSaveTheDoge>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,16 +20,28 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from pyrogram import Client, emoji, filters
+import requests
 
-MENTION = "[{}](tg://user?id={})"
-MESSAGE = "{} Welcome to [Pyrogram](https://docs.pyrogram.ml/)'s group chat {}!"
+from pyrogram import Client, filters
+from pyrogram.types import Message
 
-chats_filter = filters.chat(["PyrogramChat", "PyrogramLounge"])
+BASE = "https://nekobin.com"
 
 
-@Client.on_message(chats_filter & filters.new_chat_members)
-def welcome(client, message):
-    new_members = [MENTION.format(i.first_name, i.id) for i in message.new_chat_members]
-    text = MESSAGE.format(emoji.SPARKLES, ", ".join(new_members))
-    message.reply(text, disable_web_page_preview=True)
+@Client.on_message(filters.command("neko", prefixes=("!",)) & filters.reply)
+def neko(client: Client, message: Message):
+    reply = message.reply_to_message
+
+    if reply.text is None:
+        return
+
+    message.delete()
+
+    result = requests.post(
+        "{}/api/documents".format(BASE), data=dict(content=reply.text.encode("UTF-8"))
+    ).json()
+
+    message.reply(
+        "{}/{}.py".format(BASE, result["result"]["key"]),
+        reply_to_message_id=reply.message_id,
+    )

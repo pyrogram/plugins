@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2018 Dan Tès <https://github.com/delivrance>
+# Copyright (c) 2020 Dan Tès <https://github.com/delivrance>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -22,12 +22,12 @@
 
 import requests
 
-from pyrogram import Client, Filters
+from pyrogram import Client, filters
 
 BASE = "https://hastebin.com"
 
 
-@Client.on_message(Filters.command("haste", prefix="!") & Filters.reply)
+@Client.on_message(filters.command("haste", prefixes=("!",)) & filters.reply)
 def haste(client, message):
     reply = message.reply_to_message
 
@@ -37,11 +37,9 @@ def haste(client, message):
     message.delete()
 
     result = requests.post(
-        "{}/documents".format(BASE),
-        data=reply.text.encode("UTF-8")
+        "{}/documents".format(BASE), data=reply.text.encode("UTF-8")
     ).json()
 
     message.reply(
-        "{}/{}.py".format(BASE, result["key"]),
-        reply_to_message_id=reply.message_id
+        "{}/{}.py".format(BASE, result["key"]), reply_to_message_id=reply.message_id
     )
