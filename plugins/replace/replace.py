@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2018 BrightSide <https://github.com/bright5ide>
+# Copyright (c) 2018-present BrightSide <https://github.com/bright5ide>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
